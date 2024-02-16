@@ -1,8 +1,15 @@
 @import "~bootstrap/scss/bootstrap";
 
-
-$primary: "#4FC1E";
+$primary: #4FC1E1;
 $secondary: rgb(79, 193, 233);
+
+.primary {
+  color: $primary;
+}
+
+.secondary {
+  color: $secondary;
+}
 
 body {
   background-color: floralwhite;
