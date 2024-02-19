@@ -12,30 +12,21 @@ class ProgramFixtures extends Fixture implements DependentFixtureInterface
 
 
     const PROGRAMS = [
-        ['title' => 'Lord of the Rings',
-            'synopsis' => 'In the land of Mordor...',
-            'category_reference' => 'category_Fantastique'
+        'game_of_thrones' => [
+            'title' => 'Game of Thrones',
+            'synopsis' => 'In the land of Westeros, noble families vie for control of the Iron Throne...',
+            'category_reference' => 'category_Fantastique',
         ],
-        [
-            'title' => 'The Matrix',
-            'synopsis' => 'Welcome to the desert of the real...',
-            'category_reference' => 'category_Science-fiction'
+        'breaking_bad' => [
+            'title' => 'Breaking Bad',
+            'synopsis' => 'A high school chemistry teacher turned methamphetamine manufacturer navigates the criminal underworld...',
+            'category_reference' => 'category_Drama',
         ],
-        [
-            'title' => 'Jurassic Park',
-            'synopsis' => 'Welcome to Jurassic Park...',
-            'category_reference' => 'category_Aventure'
+        'friends' => [
+            'title' => 'Friends',
+            'synopsis' => 'Follows the lives of six friends living in Manhattan...',
+            'category_reference' => 'category_Comédie',
         ],
-        [
-            'title' => 'The Shawshank Redemption',
-            'synopsis' => 'Fear can hold you prisoner...',
-            'category_reference' => 'category_Thriller'
-        ],
-        [
-            'title' => 'Inception',
-            'synopsis' => 'Your mind is the scene of the crime...',
-            'category_reference' => 'category_Thriller'
-        ]
     ];
 
     public function load(ObjectManager $manager): void
@@ -46,6 +37,7 @@ class ProgramFixtures extends Fixture implements DependentFixtureInterface
             $program->setSynopsis($programData['synopsis']);
             $program->setCategory($this->getReference($programData['category_reference']));
             $manager->persist($program);
+            $this->addReference($key, $program);
         }
 
         $manager->flush();
