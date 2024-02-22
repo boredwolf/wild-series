@@ -14,6 +14,16 @@
                     <p>Saison disponibles {{ season.number }}</p>
                 </a>
             {% endfor %}
+            <strong>Acteurs :</strong>
+            <ul>
+                {% for actor in program.actors %}
+                    <a href="{{ path('actor_show', {id: actor.id}) }}">
+                        <li>{{ actor.firstname }} {{ actor.lastname }}</li>
+                    </a>
+                {% else %}
+                    <li>Aucun acteur pour cette série</li>
+                {% endfor %}
+            </ul>
         </div>
     </div>
 
